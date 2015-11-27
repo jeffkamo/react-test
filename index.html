@@ -1,7 +1,150 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>React</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+  <style>
+    /* Override normalize */
+    input[type="search"] {
+      box-sizing: border-box;
+      -webkit-appearance: none;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.333rem;
+      color: hsla(0, 0%, 0%, 0.9);
+      height: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-font-smoothing: grayscale;
+    }
+
+    body {
+      max-width: 36rem;
+      margin: 0 auto;
+      padding: 0 16px 48px;
+    }
+
+    .u-visuallyHidden {
+      position: absolute !important;
+      overflow: hidden !important;
+      clip: rect(1px, 1px, 1px, 1px) !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      border: 0 !important;
+    }
+
+    .u-textError {
+      color: hsl(5, 80%, 55%); /* $error-color */
+    }
+
+    .Header {
+      display: flex;
+      align-items: center;
+      min-height: 56px;
+      background: hsl(260, 60%, 45%);
+      color: white;
+      margin: 0 -16px;
+      padding: 0 8px;
+    }
+
+    .HeaderContent {
+      display: flex;
+      align-items: baseline;
+      width: 100%;
+    }
+
+    .HeaderContent > * {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+    .Header-title {
+      margin: 0;
+      font-weight: normal;
+      font-size: 17px;
+      line-height: 20px;
+    }
+
+    .Header-grow {
+      flex: 1;
+    }
+
+    .Section {
+      margin-top: 24px;
+    }
+
+    .TextField {}
+
+    .TextField-label {
+      display: inline-table;
+      line-height: 16px;
+      margin-bottom: 8px;
+    }
+
+    .TextField-reqMarker::before {
+      content: '*';
+      padding-left: 0.2em;
+      color: hsl(5, 80%, 55%); /* $error-color */
+      font-weight: bold;
+    }
+
+    .TextField-input {
+      display: block;
+      min-height: 36px;
+      min-width: 100%;
+      resize: none;
+      border-radius: 2px;
+      -webkit-appearance: none;
+      border: 1px solid hsla(0, 0%, 0%, 0.45);
+      padding: 7px 8px;
+      font-size: inherit;
+      font-weight: normal;
+      line-height: 20px;
+      color: inherit;
+    }
+
+    .TextField-error {
+      display: flex;
+      align-items: center;
+      margin-top: 8px;
+      font-size: 13px;
+      line-height: 16px;
+    }
+
+    .TextField-error > * + * {
+      margin-left: 8px;
+    }
+
+    .TextField-meta {
+      display: flex;
+      margin-top: 8px;
+      font-size: 13px;
+      line-height: 16px;
+      color: hsla(0, 0%, 0%, 0.6);
+    }
+
+    .TextField-counter {
+      flex: 1;
+      text-align: right;
+    }
+
+    .TextField.TextField--flat .TextField-input {
+      border: 0;
+      background: none;
+    }
+  </style>
+
   <script async src="build/bundle.js"></script>
 </head>
 <body>

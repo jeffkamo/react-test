@@ -14,7 +14,10 @@
   "dependencies": {
     "babel-preset-react": "^6.1.2",
     "babelify": "^7.2.0",
+    "classnames": "^2.2.0",
     "react": "^0.14.2",
-    "react-dom": "^0.14.2"
+    "react-dom": "^0.14.2",
+    "react-textarea-autosize": "^3.1.0",
+    "unique-id-mixin": "^1.0.0"
   }
 }
