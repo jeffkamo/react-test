@@ -50,7 +50,10 @@ var TextField = React.createClass({
 
     var Element = multiLine ? Textarea : 'input';
 
-    var rootClass = `TextField ${this.props.className}`;
+    var rootClass = classNames({
+      'TextField': true,
+      'isInvalid': this.props.errorMessage,
+    });
 
     var labelClass = classNames({
       'TextField-label': true,
@@ -63,14 +66,14 @@ var TextField = React.createClass({
     });
 
     if (this.props.errorMessage) {
-      errorId = this.getNextUid();
+      errorId = this.getNextUid('error');
       error = (<div className="TextField-error u-textError" id={errorId} role="alert">
-        <Icon key="error" /> {this.props.errorMessage}
+        <Icon className="Icon--small" />{this.props.errorMessage}
       </div>);
     }
 
     if (this.props.caption) {
-      captionId = this.getNextUid();
+      captionId = this.getNextUid('caption');
       caption = (<div className="TextField-caption" id={captionId}>
         {this.props.caption}
       </div>);
@@ -83,7 +86,7 @@ var TextField = React.createClass({
     var meta = (caption || counter) ? (<div className="TextField-meta">{caption}{counter}</div>) : null;
 
     return (
-      <div className={rootClass}>
+      <div className={`${rootClass} ${this.props.className}`}>
         <label className={labelClass} htmlFor={id}>
           {this.props.label}
           {req ? <span className="TextField-reqMarker"><span className="u-visuallyHidden">required</span></span> : null}

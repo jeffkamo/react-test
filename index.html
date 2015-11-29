@@ -84,6 +84,10 @@
       margin-top: 24px;
     }
 
+    /**
+     * TextField
+     */
+
     .TextField {}
 
     .TextField-label {
@@ -142,6 +146,38 @@
     .TextField.TextField--flat .TextField-input {
       border: 0;
       background: none;
+    }
+
+    /**
+     * Invalid state
+     */
+
+    .TextField.isInvalid .TextField-label {
+      color: hsl(5, 80%, 55%);
+    }
+
+    .TextField.isInvalid .TextField-input {
+      border-color: hsl(5, 80%, 55%);
+      box-shadow: 0 0 0 1px hsl(5, 80%, 55%);
+    }
+
+    /**
+     * Icon
+     */
+
+    .Icon {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+      opacity: 0.7;
+      fill: currentColor;
+      background: currentColor; /* temp */
+    }
+
+    .Icon--small {
+      width: 16px;
+      height: 16px;
     }
   </style>
 

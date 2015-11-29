@@ -33,8 +33,8 @@ var App = function(props) {
       <div className="Section">
         <TextField
           label="Tweet"
-          maxChars="140"
           multiLine
+          maxChars="140"
           minRows={2} />
       </div>
     </div>
