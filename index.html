@@ -8,6 +8,10 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
   <style>
+    /**
+     * Base
+     */
+
     /* Override normalize */
     input[type="search"] {
       box-sizing: border-box;
@@ -34,6 +38,10 @@
       padding: 0 16px 48px;
     }
 
+    /**
+     * Utils
+     */
+
     .u-visuallyHidden {
       position: absolute !important;
       overflow: hidden !important;
@@ -45,8 +53,12 @@
     }
 
     .u-textError {
-      color: hsl(5, 80%, 55%); /* $error-color */
+      color: hsl(5, 80%, 55%) !important; /* $error-color */
     }
+
+    /**
+     * Header
+     */
 
     .Header {
       display: flex;
@@ -58,13 +70,13 @@
       padding: 0 8px;
     }
 
-    .HeaderContent {
+    .Header-content {
       display: flex;
       align-items: baseline;
       width: 100%;
     }
 
-    .HeaderContent > * {
+    .Header-content > * {
       padding-left: 8px;
       padding-right: 8px;
     }
@@ -79,6 +91,10 @@
     .Header-grow {
       flex: 1;
     }
+
+    /**
+     * Section
+     */
 
     .Section {
       margin-top: 24px;
@@ -96,7 +112,11 @@
       margin-bottom: 8px;
     }
 
-    .TextField-reqMarker::before {
+    .TextField-requiredMarker {
+      font-size: inherit;
+    }
+
+    .TextField-requiredMarker::before {
       content: '*';
       padding-left: 0.2em;
       color: hsl(5, 80%, 55%); /* $error-color */

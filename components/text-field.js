@@ -12,17 +12,20 @@ var TextField = React.createClass({
     caption: React.PropTypes.string,
     placeholder: React.PropTypes.string,
     name: React.PropTypes.string,
-    type: React.PropTypes.oneOf(['text', 'email', 'search', 'number',
-      'tel', 'date', 'month', 'password']),
-    maxChars: React.PropTypes.string,
+    type: React.PropTypes.oneOf([
+      'text', 'email', 'search', 'number', 'tel', 'date', 'month', 'password'
+    ]),
+    maxChars: React.PropTypes.number,
     multiLine: React.PropTypes.bool,
     hideLabel: React.PropTypes.bool,
     required: React.PropTypes.bool,
     errorMessage: React.PropTypes.string,
   },
+
   mixins: [
     UniqeIdMixin
   ],
+
   getDefaultProps: function() {
     return {
       className: '',
@@ -31,15 +34,22 @@ var TextField = React.createClass({
       hideLabel: false,
     };
   },
+
   getInitialState: function() {
-    return {value: ''};
+    return {
+      value: ''
+    };
   },
+
   handleChange: function(event) {
-    this.setState({value: event.target.value});
+    this.setState({
+      value: event.target.value
+    });
   },
+
   render: function() {
     var id = this.props.id || this.getNextUid();
-    var req = this.props.required;
+    var requiredMarker = null;
     var value = this.state.value;
     var multiLine = this.props.multiLine;
     var maxChars = Math.ceil(this.props.maxChars);
@@ -65,31 +75,36 @@ var TextField = React.createClass({
       'u-textError': remainingChars < 0,
     });
 
+    if (this.props.required) {
+      requiredMarker = <small className="TextField-requiredMarker">
+        <span className="u-visuallyHidden">required</span>
+      </small>;
+    };
+
     if (this.props.errorMessage) {
       errorId = this.getNextUid('error');
-      error = (<div className="TextField-error u-textError" id={errorId} role="alert">
+      error = <div className="TextField-error u-textError" id={errorId} role="alert">
         <Icon className="Icon--small" />{this.props.errorMessage}
-      </div>);
+      </div>;
     }
 
     if (this.props.caption) {
       captionId = this.getNextUid('caption');
-      caption = (<div className="TextField-caption" id={captionId}>
+      caption = <div className="TextField-caption" id={captionId}>
         {this.props.caption}
-      </div>);
+      </div>;
     }
 
-    var counter = maxChars ? (<div className={counterClass}>
+    var counter = maxChars ? <div className={counterClass}>
       {remainingChars}
-    </div>) : null;
+    </div> : null;
 
-    var meta = (caption || counter) ? (<div className="TextField-meta">{caption}{counter}</div>) : null;
+    var meta = (caption || counter) ? <div className="TextField-meta">{caption}{counter}</div> : null;
 
     return (
       <div className={`${rootClass} ${this.props.className}`}>
         <label className={labelClass} htmlFor={id}>
-          {this.props.label}
-          {req ? <span className="TextField-reqMarker"><span className="u-visuallyHidden">required</span></span> : null}
+          {this.props.label}{requiredMarker}
         </label>
 
         <Element
@@ -100,6 +115,7 @@ var TextField = React.createClass({
           type={multiLine ? null : this.props.type}
           minRows={multiLine ? this.props.minRows : null}
           value={value}
+          required={this.props.required}
           disabled={this.props.disabled}
           onChange={this.handleChange}
           aria-invalid={error ? true : null}
